@@ -9,7 +9,8 @@
 
 <body>
   <div class="box" id="heading">
-    <h1><%= listTitle %></h1>
+    <h1> <%= listName %> </h1>
+    <h2><%= todayDate %></h2>
   </div>
   <div class="box">
     <% for (let i=0; i < addedItem.length; i++ ){ %>
@@ -20,7 +21,7 @@
     <%}%>
     <form action="/" method="post">
       <input type="text" name="addedItem" placeholder="Activity" autocomplete="off">
-      <button type="submit" name="button">+</button>
+      <button type="submit" name="list" value=<%= listName %> >+</button>
     </form>
     </div>
   </body>
