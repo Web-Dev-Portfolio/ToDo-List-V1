@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>To-Do List V1</title>
-  </head>
-  <body>
+
+<head>
+  <meta charset="utf-8">
+  <title>To-Do List V1</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <div class="box" id="heading">
     <h1><%= listTitle %></h1>
-
-        <% for (let i=0; i < addedItem.length; i++ ){ %>
-            <li><%= addedItem[i] %></li>
-        <%}%>
-
-
-      <form action="/" method="post">
-        <input type="text" name="addedItem" placeholder="Activity">
-        <button type="submit" name="button">Add!</button>
-      </form>
+  </div>
+  <div class="box">
+    <% for (let i=0; i < addedItem.length; i++ ){ %>
+    <div class="item">
+      <p><%= addedItem[i] %></p>
+    </div>
+    <%}%>
+    <form action="/" method="post">
+      <input type="text" name="addedItem" placeholder="Activity">
+      <button type="submit" name="button">Add!</button>
+    </form>
+    </div>
   </body>
 </html>
