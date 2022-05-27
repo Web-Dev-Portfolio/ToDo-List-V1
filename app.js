@@ -24,7 +24,11 @@ app.get("/", function(req,res){
 
 app.post("/", function(req,res){
   let item = req.body.addedItem
-  items.push(item)
+  if (item != ""){
+    items.push(item)
+  }else {
+    console.log("No item")
+  }
   res.redirect("/")
 })
 

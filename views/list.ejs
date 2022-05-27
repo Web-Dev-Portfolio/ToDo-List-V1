@@ -14,12 +14,13 @@
   <div class="box">
     <% for (let i=0; i < addedItem.length; i++ ){ %>
     <div class="item">
+      <input type="checkbox">
       <p><%= addedItem[i] %></p>
     </div>
     <%}%>
     <form action="/" method="post">
-      <input type="text" name="addedItem" placeholder="Activity">
-      <button type="submit" name="button">Add!</button>
+      <input type="text" name="addedItem" placeholder="Activity" autocomplete="off">
+      <button type="submit" name="button">+</button>
     </form>
     </div>
   </body>
