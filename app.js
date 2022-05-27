@@ -1,27 +1,18 @@
 const express = require("express")
 const bodyParser = require("body-parser")
 const ejs = require("ejs")
+const date = require(__dirname + "/date.js")
 
 const app = express()
-app.use(bodyParser.urlencoded({
-  extended: true
-}))
+app.use(bodyParser.urlencoded({extended: true}))
 app.use(express.static("public"))
 app.set("view engine", "ejs")
 
 let items = []
 let workItems = []
+let todayFullDate = date.getFullDate()
 
 app.get("/", function(req, res) {
-  // alert("Hello world!")
-  var date = new Date()
-  let options = {
-    weekday: "long",
-    day: "numeric",
-    month: "long",
-    year: "numeric"
-  }
-  todayFullDate = date.toLocaleDateString("id-ID", options)
   res.render("list", {
     listName: "General List",
     addedItem: items,
@@ -50,8 +41,6 @@ app.post("/", function(req, res) {
   } else {
     console.log("No item")
   }
-  console.log(req.body)
-
 })
 
 app.listen(3000, function() {
