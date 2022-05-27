@@ -11,7 +11,15 @@ let items =[]
 
 app.get("/", function(req,res){
   // alert("Hello world!")
-  res.render("list", {listTitle : "Testing title", addedItem : items})
+  var date = new Date()
+  let options = {
+    weekday : "long",
+    day : "numeric",
+    month : "long",
+    year : "numeric"
+  }
+  todayFullDate = date.toLocaleDateString("id-ID", options)
+  res.render("list", {listTitle : todayFullDate, addedItem : items})
 })
 
 app.post("/", function(req,res){
