@@ -10,7 +10,7 @@ app.set("view engine", "ejs")
 
 let items = []
 let workItems = []
-let todayFullDate = date.getFullDate()
+let todayFullDate = date.getDayName()
 
 app.get("/", function(req, res) {
   res.render("list", {

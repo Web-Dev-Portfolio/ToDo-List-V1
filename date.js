@@ -7,6 +7,13 @@ function getFullDate(){
     month: "long",
     year: "numeric"
   }
-  todayFullDate = date.toLocaleDateString("id-ID", options)
-  return todayFullDate
+  return date.toLocaleDateString("id-ID", options)
 };
+
+exports.getDayName = function(){
+  var date = new Date()
+  let options = {
+    weekday: "long",
+  }
+  return date.toLocaleDateString("id-ID", options)
+}
