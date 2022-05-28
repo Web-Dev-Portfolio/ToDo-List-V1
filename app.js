@@ -4,19 +4,21 @@ const ejs = require("ejs")
 const date = require(__dirname + "/date.js")
 
 const app = express()
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.urlencoded({
+  extended: true
+}))
 app.use(express.static("public"))
 app.set("view engine", "ejs")
 
 let items = []
 let workItems = []
-let todayFullDate = date.getDayName()
+let todayFullDate = date.getFullDate()
 
 app.get("/", function(req, res) {
   res.render("list", {
     listName: "General List",
     addedItem: items,
-    todayDate : todayFullDate
+    todayDate: todayFullDate
   })
 })
 
@@ -24,11 +26,12 @@ app.get("/work", function(req, res) {
   res.render("list", {
     listName: "Work List",
     addedItem: workItems,
-    todayDate : todayFullDate
+    todayDate: todayFullDate
   })
 })
 
 app.post("/", function(req, res) {
+  //adding item
   let item = req.body.addedItem
   if (item != "") {
     if (req.body.list === "Work") {
@@ -41,8 +44,16 @@ app.post("/", function(req, res) {
   } else {
     console.log("No item")
   }
+  //reset item
+  if (req.body.reset === "Work") {
+    workItems = []
+    res.redirect("/work")
+  } else if (req.body.reset === "General") {
+    items = []
+    res.redirect("/")
+  }
 })
 
-app.listen(process.env.PORT ||3000, function() {
+app.listen(process.env.PORT || 3000, function() {
   console.log("Server ready gan!")
 })

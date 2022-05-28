@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+<%- include("header") -%>
 
-<head>
-  <meta charset="utf-8">
-  <title>To-Do List V1</title>
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-
-<body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <div class="box" id="heading">
     <h1> <%= listName %> </h1>
     <h2><%= todayDate %></h2>
@@ -21,8 +14,14 @@
     <%}%>
     <form action="/" method="post">
       <input type="text" name="addedItem" placeholder="Activity" autocomplete="off">
-      <button type="submit" name="list" value=<%= listName %> >+</button>
+      <button id="submit" type="submit" name="list" value=<%= listName %> >+</button>
     </form>
-    </div>
-  </body>
-</html>
+  </div>
+  <div>
+    <form action="/" method="post">
+      <button class="box reset" id="reset" type="submit" name="reset" value=<%= listName %>>Reset</button>
+    </form>
+  </div>
+  <script src="js/list.js" charset="utf-8"></script>
+
+<%- include("footer") -%>
